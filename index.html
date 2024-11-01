@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>METRONAVI</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .header {
+            background-color: #1e3a8a;
+            color: white;
+        }
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: opacity 1s ease-in-out;
+            z-index: 0;
+        }
+        .background-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="fixed top-0 left-0 right-0 header shadow-lg p-4 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold">METRONAVI</div>
+            <nav class="hidden md:flex space-x-4">
+                <a href="#" class="hover:text-blue-300">活動紹介</a>
+                <a href="#" class="hover:text-blue-300">RE</a>
+                <a href="#" class="hover:text-blue-300">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="background-container" id="backgroundContainer"></div>
+
+    <main class="content h-screen flex items-center justify-center">
+        <div class="container mx-auto text-center">
+            <div class="text-5xl font-bold text-blue-500 mt-[-40px] mb-20">ポータルサイトMETRONAVI</div>
+
+            <section class="mb-6">
+                <h2 class="text-4xl font-semibold mb-5">活動紹介</h2>
+                <p class="mb-8">私たちは、東京都立大学の生徒に役立つ情報を発信しています。また、”RE"というフリーペーパーを発行することで、南大沢の地元企業と都立大生とのつながりを深めることを目指しています。</p>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-4xl font-semibold mb-4">"RE" フリーペーパーについて</h2>
+                <p class="mb-2">フリーペーパーREは毎年都立大制に役立つ情報を発信しています！</p>
+                <a href="https://www.canva.com/design/DAGVH9KGaq8/UwPuFL9Za7zd5j_h5U-QbA/view?utm_content=DAGVH9KGaq8&utm_campaign=designshare&utm_medium=link&utm_source=editor">
+                    <button class="mt-4 bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
+                        フリーペーパー「RE」を見る
+                    </button>
+                </a>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold mb-5">REをみてみよう！！</h2>
+                <p>RE2024年版の画面を”METROなSAKABar”にもっていくと南大沢で使えるクーポンを獲得できます！</p>
+            </section>
+
+            <section>
+                <h2 class="text-4xl font-semibold mb-2">Contact</h2>
+                <p>サークルの情報はSNSで投稿しています！</p>
+                <ul class="flex flex-col sm:flex-row items-center sm:space-x-8 space-y-4 sm:space-y-0">
+                    <li class="flex items-center space-x-4">
+                        <i class="fab fa-instagram text-pink-500"></i>
+                        <a href="https://www.instagram.com/metronavi_tmu/profilecard/?igsh=MTNoamh1Zmxjbnl1dw==" target="_blank" class="text-blue-400 hover:underline text-3xl">
+                            Instagram
+                        </a>
+                        <img src="images/S__118439954.jpg" alt="Instagram Image" class="w-32 h-32 ml-4"> 
+                    </li>
+                    <li class="flex items-center space-x-4">
+                        <i class="fab fa-x-twitter text-blue-500"></i>
+                        <a href="https://x.com/metro_navi_tmu" target="_blank" class="text-blue-400 hover:underline text-3xl">
+                            X
+                        </a>
+                        <img src="images/S__118448211.jpg" alt="X Image" class="w-32 h-32 ml-4">
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const backgroundImages = [
+            'url("images/LINE_ALBUM_めなびー_241101_1.jpg")',
+            'url("images/S__118448145.jpg")',
+            'url("images/LINE_ALBUM_めなびー_241101_2.jpg")'
+        ];
+
+        let currentIndex = 0;
+
+        function changeBackgroundImage() {
+            const backgroundContainer = document.getElementById('backgroundContainer');
+            backgroundContainer.style.opacity = 0;
+
+            setTimeout(() => {
+                backgroundContainer.style.backgroundImage = backgroundImages[currentIndex];
+                backgroundContainer.style.opacity = 1;
+                currentIndex = (currentIndex + 1) % backgroundImages.length;
+            }, 1500);
+        }
+
+        setInterval(changeBackgroundImage, 18000);
+    </script>
+</body>
+</html>
